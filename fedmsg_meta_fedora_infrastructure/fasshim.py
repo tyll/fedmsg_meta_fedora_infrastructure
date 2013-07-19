@@ -90,15 +90,17 @@ def make_fas_cache(**config):
         request = fasclient.send_request('/user/list',
                                         req_params={'search': '*'},
                                         auth=True)
-        users = request['people'] + request['unapproved_people']
     finally:
         socket.setdefaulttimeout(timeout)
 
     log.info("Caching necessary user data")
-    for user in users:
+    for user in request['people']:
         nick = user['ircnick']
         if nick:
             _fas_cache[nick] = user['username']
+
+    # Cleanup as much as possible.  We have memory issues here.
+    del request
 
     return _fas_cache
 
