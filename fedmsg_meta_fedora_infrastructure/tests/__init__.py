@@ -757,7 +757,7 @@ class TestBodhiComment(Base):
     expected_secondary_icon = "http://www.gravatar.com/avatar/" + \
         "2f933f4364baaabd2d3ab8f0664faef2?s=64&d=http%3A%2F%2F" + \
         "fedoraproject.org%2Fstatic%2Fimages%2Ffedora_infinity_64x64.png"
-    expected_usernames = set(['ralph'])
+    expected_usernames = set(['ralph', 'lmacken'])
     expected_packages = set(['fedmsg'])
     expected_objects = set(['packages/fedmsg'])
 
@@ -773,7 +773,8 @@ class TestBodhiComment(Base):
                 "text": "Can you believe how much testing we're doing?",
                 "karma": -1,
                 "anonymous": False,
-                "timestamp": 1344344050.0
+                "timestamp": 1344344050.0,
+                "update_submitter": "lmacken",
             }
         }
     }

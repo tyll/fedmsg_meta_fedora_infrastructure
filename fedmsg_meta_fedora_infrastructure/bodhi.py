@@ -35,7 +35,7 @@ class BodhiProcessor(BaseProcessor):
     __link__ = "https://admin.fedoraproject.org/updates"
     __docs__ = "http://fedoraproject.org/wiki/Bodhi"
     __obj__ = "Package Updates"
-    __icon__ = ("https://admin.fedoraproject.org/updates" 
+    __icon__ = ("https://admin.fedoraproject.org/updates"
                 "/static/images/bodhi-icon-48.png")
 
     def secondary_icon(self, msg, **config):
@@ -143,6 +143,11 @@ class BodhiProcessor(BaseProcessor):
 
         try:
             users.append(msg['msg']['comment']['author'])
+        except KeyError:
+            pass
+
+        try:
+            users.append(msg['msg']['comment']['update_submitter'])
         except KeyError:
             pass
 
